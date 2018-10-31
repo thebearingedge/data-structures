@@ -1,0 +1,80 @@
+{
+  "name": "data-structures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha --opts mocha.opts",
+    "tdd": "mocha -w -R min --opts mocha.opts",
+    "cover": "nyc npm test"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "esm": "3.0.84"
+  },
+  "devDependencies": {
+    "chai": "4.2.0",
+    "eslint": "5.8.0",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "8.0.0",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-standard": "4.0.0",
+    "mocha": "5.2.0",
+    "nyc": "13.1.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "standard"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/test/*.js",
+          "**/*.test.js"
+        ],
+        "env": {
+          "mocha": true
+        }
+      }
+    ],
+    "rules": {
+      "brace-style": [
+        "error",
+        "stroustrup"
+      ],
+      "curly": [
+        "error",
+        "multi-line"
+      ],
+      "no-console": 0,
+      "padded-blocks": 0,
+      "space-before-function-paren": [
+        "error",
+        {
+          "anonymous": "always",
+          "named": "never",
+          "asyncArrow": "always"
+        }
+      ]
+    }
+  },
+  "nyc": {
+    "reporter": [
+      "html",
+      "text-summary"
+    ],
+    "exclude": [
+      "**/test/**",
+      "**/*.test.*",
+      "coverage/**",
+      "database/seeds/",
+      "**/node_modules/**"
+    ]
+  }
+}
