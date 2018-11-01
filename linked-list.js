@@ -65,6 +65,7 @@ export default class LinkedList {
     this._length--
     if (index === 0) {
       this._head = this._head.next
+      this._tail = this._head ? this._tail : null
       return this
     }
     let { _head: prev } = this

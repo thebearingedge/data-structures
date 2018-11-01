@@ -235,6 +235,17 @@ describe('LinkedList', () => {
 
     })
 
+    context('when the list has one element in it', () => {
+
+      it('removes the head and tail of the list', () => {
+        const list = new LinkedList(1).delete(0)
+        expect(list.head).to.equal(undefined)
+        expect(list.tail).to.equal(undefined)
+        expect(list.toArray()).to.deep.equal([])
+      })
+
+    })
+
     context('when the index is in range of the list length', () => {
 
       it('removes the value from the list', () => {
@@ -253,6 +264,7 @@ describe('LinkedList', () => {
         expect(list.length).to.equal(3)
         expect(list.toArray()).to.deep.equal([1, 2, 3])
       })
+
     })
 
     context('when the index is greater than the end of the list', () => {

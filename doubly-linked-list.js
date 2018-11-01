@@ -70,6 +70,7 @@ export default class DoublyLinkedList {
     if (index === 0) {
       this._head = this._head.next
       if (this._head) this._head.prev = null
+      this._tail = this._head ? this._tail : null
       return this
     }
     let { _head: prev } = this

@@ -235,6 +235,17 @@ describe('DoublyLinkedList', () => {
 
     })
 
+    context('when the list has one element in it', () => {
+
+      it('removes the head and tail of the list', () => {
+        const list = new DoublyLinkedList(1).delete(0)
+        expect(list.head).to.equal(undefined)
+        expect(list.tail).to.equal(undefined)
+        expect(list.toArray()).to.deep.equal([])
+      })
+
+    })
+
     context('when the index is in range of the list length', () => {
 
       it('removes the value from the list', () => {
