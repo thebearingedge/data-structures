@@ -1,3 +1,5 @@
+import Queue from './queue'
+
 class Node {
   constructor(left, value, right) {
     this.left = left
@@ -71,6 +73,18 @@ export default class BinaryTree {
   postOrderArray() {
     if (!this._root) return []
     return this._root.postOrderArray()
+  }
+  levelOrderArray() {
+    if (!this._root) return []
+    const values = []
+    const nodes = new Queue(this._root)
+    while (nodes.size) {
+      const node = nodes.dequeue()
+      values.push(node.value)
+      node.left && nodes.enqueue(node.left)
+      node.right && nodes.enqueue(node.right)
+    }
+    return values
   }
   delete(value) {
     if (!this._root) return this

@@ -31,6 +31,15 @@ describe('BinaryTree', () => {
 
   })
 
+  describe('levelOrderArray()', () => {
+
+    it('returns an array in level-order', () => {
+      const tree = new BinaryTree(6, 4, 9, 2, 5, 8, 10, 1, 3, 7)
+      const array = tree.levelOrderArray()
+      expect(array).to.deep.equal([6, 4, 9, 2, 5, 8, 10, 1, 3, 7])
+    })
+  })
+
   describe('contains(value)', () => {
 
     context('when the tree is empty', () => {
