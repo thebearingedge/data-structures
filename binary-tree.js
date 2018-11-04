@@ -34,6 +34,11 @@ class Node {
     const right = (this.right) ? this.right.inOrderArray() : []
     return [...left, this.value, ...right]
   }
+  preOrderArray() {
+    const left = this.left ? this.left.preOrderArray() : []
+    const right = this.right ? this.right.preOrderArray() : []
+    return [this.value, ...left, ...right]
+  }
 }
 
 export default class BinaryTree {
@@ -53,6 +58,10 @@ export default class BinaryTree {
   inOrderArray() {
     if (!this._root) return []
     return this._root.inOrderArray()
+  }
+  preOrderArray() {
+    if (!this._root) return []
+    return this._root.preOrderArray()
   }
   delete(value) {
     if (!this._root) return this
