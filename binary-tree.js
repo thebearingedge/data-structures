@@ -29,6 +29,11 @@ class Node {
       ? this.left = node
       : this.right = node
   }
+  inOrderArray() {
+    const left = (this.left) ? this.left.inOrderArray() : []
+    const right = (this.right) ? this.right.inOrderArray() : []
+    return [...left, this.value, ...right]
+  }
 }
 
 export default class BinaryTree {
@@ -44,6 +49,10 @@ export default class BinaryTree {
   contains(value) {
     return !!this._root &&
            !!this._root.find(this, value).node
+  }
+  inOrderArray() {
+    if (!this._root) return []
+    return this._root.inOrderArray()
   }
   delete(value) {
     if (!this._root) return this

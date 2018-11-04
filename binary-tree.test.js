@@ -3,6 +3,14 @@ import BinaryTree from './binary-tree'
 
 describe('BinaryTree', () => {
 
+  describe('inOrderArray', () => {
+    it('should return an in order array', () => {
+      const tree = new BinaryTree(6, 4, 9, 2, 5, 8, 10, 1, 3, 7)
+      const array = tree.inOrderArray()
+      expect(array).to.deep.equal([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    })
+  })
+
   describe('contains(value)', () => {
 
     context('when the tree is empty', () => {
