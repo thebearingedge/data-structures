@@ -7,15 +7,6 @@ class Node {
     this.value = value
     this.right = right
   }
-  insert(value) {
-    if (value >= this.value) {
-      if (this.right) return this.right.insert(value)
-      this.right = new Node(null, value, null)
-      return
-    }
-    if (this.left) return this.left.insert(value)
-    this.left = new Node(null, value, null)
-  }
   find(parent, value) {
     let node = this
     while (node) {
@@ -53,8 +44,15 @@ export default class BinaryTree {
     return values.reduce((tree, value) => tree.insert(value), this)
   }
   insert(value) {
-    if (this._root) this._root.insert(value)
-    else this._root = new Node(null, value, null)
+    const node = new Node(null, value, null)
+    if (!this._root) {
+      this._root = node
+      return this
+    }
+    const { parent } = this._root.find(this, value)
+    value < parent.value
+      ? parent.left = node
+      : parent.right = node
     return this
   }
   contains(value) {
