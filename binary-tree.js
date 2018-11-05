@@ -1,3 +1,4 @@
+import Stack from './stack'
 import Queue from './queue'
 
 class Node {
@@ -31,11 +32,6 @@ class Node {
       ? this.left = node
       : this.right = node
   }
-  inOrderArray() {
-    const left = (this.left) ? this.left.inOrderArray() : []
-    const right = (this.right) ? this.right.inOrderArray() : []
-    return [...left, this.value, ...right]
-  }
   preOrderArray() {
     const left = this.left ? this.left.preOrderArray() : []
     const right = this.right ? this.right.preOrderArray() : []
@@ -62,9 +58,20 @@ export default class BinaryTree {
     return !!this._root &&
            !!this._root.find(this, value).node
   }
-  inOrderArray() {
-    if (!this._root) return []
-    return this._root.inOrderArray()
+  * inOrder() {
+    const nodes = new Stack()
+    let { _root: node } = this
+    while (true) {
+      if (node) {
+        nodes.push(node)
+        node = node.left
+        continue
+      }
+      if (!nodes.size) return
+      const { value, right } = nodes.pop()
+      yield value
+      node = right
+    }
   }
   preOrderArray() {
     if (!this._root) return []
@@ -75,7 +82,8 @@ export default class BinaryTree {
     return this._root.postOrderArray()
   }
   * levelOrder() {
-    const nodes = new Queue(this._root)
+    const nodes = new Queue()
+    this._root && nodes.enqueue(this._root)
     while (nodes.size) {
       const { value, left, right } = nodes.dequeue()
       yield value
