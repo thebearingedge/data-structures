@@ -51,7 +51,7 @@ export default class DoublyLinkedList {
       throw new RangeError('Cannot insert beyond head of empty DoublyLinkedList')
     }
     if (index > this._length) {
-      throw new RangeError('Cannot insert beyond end of DoublyLinkedList')
+      throw new RangeError('Cannot insert beyond tail of DoublyLinkedList')
     }
     this._length++
     let { _head: prev } = this
@@ -64,7 +64,7 @@ export default class DoublyLinkedList {
       throw new RangeError('Cannot delete from empty DoublyLinkedList')
     }
     if (index >= this._length) {
-      throw new RangeError('Cannot delete beyond end of DoublyLinkedList')
+      throw new RangeError('Cannot delete beyond tail of DoublyLinkedList')
     }
     this._length--
     if (index === 0) {
