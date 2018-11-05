@@ -13,12 +13,11 @@ describe('BinaryTree', () => {
 
   })
 
-  describe('preOrderArray()', () => {
+  describe('preOrder()', () => {
 
     it('returns an array in pre-order', () => {
       const tree = new BinaryTree(6, 4, 9, 2, 5, 8, 10, 1, 3, 7)
-      const array = tree.preOrderArray()
-      expect(array).to.deep.equal([6, 4, 2, 1, 3, 5, 9, 8, 7, 10])
+      expect([...tree.preOrder()]).to.deep.equal([6, 4, 2, 1, 3, 5, 9, 8, 7, 10])
     })
 
   })
