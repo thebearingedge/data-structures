@@ -112,7 +112,7 @@ describe('DoublyLinkedList', () => {
         expect(list.head).to.equal(1)
         expect(list.tail).to.equal(1)
         expect(list.length).to.equal(1)
-        expect(list.toArray()).to.deep.equal([1])
+        expect([...list]).to.deep.equal([1])
       })
 
     })
@@ -124,7 +124,7 @@ describe('DoublyLinkedList', () => {
         expect(list.head).to.equal(4)
         expect(list.tail).to.equal(7)
         expect(list.length).to.equal(3)
-        expect(list.toArray()).to.deep.equal([4, 5, 7])
+        expect([...list]).to.deep.equal([4, 5, 7])
       })
 
     })
@@ -140,7 +140,7 @@ describe('DoublyLinkedList', () => {
         expect(list.head).to.equal(1)
         expect(list.tail).to.equal(1)
         expect(list.length).to.equal(1)
-        expect(list.toArray()).to.deep.equal([1])
+        expect([...list]).to.deep.equal([1])
       })
 
     })
@@ -152,7 +152,7 @@ describe('DoublyLinkedList', () => {
         expect(list.head).to.equal(7)
         expect(list.tail).to.equal(5)
         expect(list.length).to.equal(3)
-        expect(list.toArray()).to.deep.equal([7, 4, 5])
+        expect([...list]).to.deep.equal([7, 4, 5])
       })
 
     })
@@ -168,7 +168,7 @@ describe('DoublyLinkedList', () => {
         expect(list.head).to.equal(1)
         expect(list.tail).to.equal(1)
         expect(list.length).to.equal(1)
-        expect(list.toArray()).to.deep.equal([1])
+        expect([...list]).to.deep.equal([1])
       })
 
     })
@@ -187,7 +187,7 @@ describe('DoublyLinkedList', () => {
       it('inserts the value into the list', () => {
         const list = new DoublyLinkedList(0, 1, 2).insert(2, 3)
         expect(list.length).to.equal(4)
-        expect(list.toArray()).to.deep.equal([0, 1, 3, 2])
+        expect([...list]).to.deep.equal([0, 1, 3, 2])
       })
 
     })
@@ -198,7 +198,7 @@ describe('DoublyLinkedList', () => {
         const list = new DoublyLinkedList(0, 1).insert(2, 2)
         expect(list.tail).to.equal(2)
         expect(list.length).to.equal(3)
-        expect(list.toArray()).to.deep.equal([0, 1, 2])
+        expect([...list]).to.deep.equal([0, 1, 2])
       })
 
     })
@@ -230,7 +230,7 @@ describe('DoublyLinkedList', () => {
       it('removes the head of the list', () => {
         const list = new DoublyLinkedList(1, 2, 3, 4).delete(0)
         expect(list.head).to.equal(2)
-        expect(list.toArray()).to.deep.equal([2, 3, 4])
+        expect([...list]).to.deep.equal([2, 3, 4])
       })
 
     })
@@ -241,7 +241,7 @@ describe('DoublyLinkedList', () => {
         const list = new DoublyLinkedList(1).delete(0)
         expect(list.head).to.equal(undefined)
         expect(list.tail).to.equal(undefined)
-        expect(list.toArray()).to.deep.equal([])
+        expect([...list]).to.deep.equal([])
       })
 
     })
@@ -251,7 +251,7 @@ describe('DoublyLinkedList', () => {
       it('removes the value from the list', () => {
         const list = new DoublyLinkedList(1, 2, 3, 4).delete(2)
         expect(list.length).to.equal(3)
-        expect(list.toArray()).to.deep.equal([1, 2, 4])
+        expect([...list]).to.deep.equal([1, 2, 4])
       })
 
     })
@@ -262,7 +262,7 @@ describe('DoublyLinkedList', () => {
         const list = new DoublyLinkedList(1, 2, 3, 4).delete(3)
         expect(list.tail).to.equal(3)
         expect(list.length).to.equal(3)
-        expect(list.toArray()).to.deep.equal([1, 2, 3])
+        expect([...list]).to.deep.equal([1, 2, 3])
       })
     })
 

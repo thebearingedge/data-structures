@@ -84,13 +84,11 @@ export default class DoublyLinkedList {
     this._tail = prev.next ? this._tail : prev
     return this
   }
-  toArray() {
-    const array = []
+  * [Symbol.iterator]() {
     let { _head: node } = this
     while (node) {
-      array.push(node.value)
+      yield node.value
       node = node.next
     }
-    return array
   }
 }
