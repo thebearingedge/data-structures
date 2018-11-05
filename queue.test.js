@@ -53,7 +53,6 @@ describe('Queue', () => {
       const queue = new Queue().enqueue(7)
       expect(queue.size).to.equal(1)
       expect(queue.peek()).to.equal(7)
-      expect(queue.toArray()).to.deep.equal([7])
     })
   })
 
@@ -71,11 +70,18 @@ describe('Queue', () => {
 
       it('removes and returns the first item in the queue', () => {
         const queue = new Queue(1, 2, 3, 4)
-        const item = queue.dequeue()
-        expect(item).to.equal(1)
+        expect(queue.dequeue()).to.equal(1)
         expect(queue.size).to.equal(3)
         expect(queue.peek()).to.equal(2)
-        expect(queue.toArray()).to.deep.equal([2, 3, 4])
+        expect(queue.dequeue()).to.equal(2)
+        expect(queue.size).to.equal(2)
+        expect(queue.peek()).to.equal(3)
+        expect(queue.dequeue()).to.equal(3)
+        expect(queue.size).to.equal(1)
+        expect(queue.peek()).to.equal(4)
+        expect(queue.dequeue()).to.equal(4)
+        expect(queue.size).to.equal(0)
+        expect(queue.peek()).to.equal(undefined)
       })
 
     })

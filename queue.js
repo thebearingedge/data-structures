@@ -22,7 +22,4 @@ export default class Queue {
     this._items.delete(0)
     return item
   }
-  toArray() {
-    return this._items.toArray()
-  }
 }
