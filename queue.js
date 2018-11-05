@@ -2,24 +2,24 @@ import LinkedList from './linked-list'
 
 export default class Queue {
   constructor(...values) {
-    this._items = new LinkedList(...values)
+    this._list = new LinkedList(...values)
   }
   get size() {
-    return this._items.length
+    return this._list.length
   }
   peek() {
-    return this._items.head
+    return this._list.head
   }
   enqueue(value) {
-    this._items.append(value)
+    this._list.append(value)
     return this
   }
   dequeue() {
-    if (this._items.length === 0) {
+    if (this._list.length === 0) {
       throw new RangeError('Cannot dequeue from an empty Queue')
     }
-    const { head: item } = this._items
-    this._items.delete(0)
+    const { head: item } = this._list
+    this._list.delete(0)
     return item
   }
 }
