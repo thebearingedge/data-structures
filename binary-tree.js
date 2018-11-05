@@ -74,17 +74,14 @@ export default class BinaryTree {
     if (!this._root) return []
     return this._root.postOrderArray()
   }
-  levelOrderArray() {
-    if (!this._root) return []
-    const values = []
+  * levelOrder() {
     const nodes = new Queue(this._root)
     while (nodes.size) {
-      const node = nodes.dequeue()
-      values.push(node.value)
-      node.left && nodes.enqueue(node.left)
-      node.right && nodes.enqueue(node.right)
+      const { value, left, right } = nodes.dequeue()
+      yield value
+      left && nodes.enqueue(left)
+      right && nodes.enqueue(right)
     }
-    return values
   }
   delete(value) {
     if (!this._root) return this

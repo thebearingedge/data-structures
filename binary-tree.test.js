@@ -31,12 +31,12 @@ describe('BinaryTree', () => {
 
   })
 
-  describe('levelOrderArray()', () => {
+  describe('levelOrder()', () => {
 
-    it('returns an array in level-order', () => {
+    it('generates values in level-order', () => {
       const tree = new BinaryTree(6, 4, 9, 2, 5, 8, 10, 1, 3, 7)
-      const array = tree.levelOrderArray()
-      expect(array).to.deep.equal([6, 4, 9, 2, 5, 8, 10, 1, 3, 7])
+      expect([...tree.levelOrder()])
+        .to.deep.equal([6, 4, 9, 2, 5, 8, 10, 1, 3, 7])
     })
   })
 
