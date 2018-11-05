@@ -71,10 +71,18 @@ describe('Stack', () => {
 
       it('removes and returns the last item from the stack', () => {
         const stack = new Stack(4, 5, 6, 7)
-        const item = stack.pop()
-        expect(item).to.equal(7)
+        expect(stack.pop()).to.equal(7)
         expect(stack.size).to.equal(3)
         expect(stack.peek()).to.equal(6)
+        expect(stack.pop()).to.equal(6)
+        expect(stack.size).to.equal(2)
+        expect(stack.peek()).to.equal(5)
+        expect(stack.pop()).to.equal(5)
+        expect(stack.size).to.equal(1)
+        expect(stack.peek()).to.equal(4)
+        expect(stack.pop()).to.equal(4)
+        expect(stack.size).to.equal(0)
+        expect(stack.peek()).to.equal(undefined)
       })
 
     })
