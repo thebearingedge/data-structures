@@ -17,10 +17,13 @@ class Node {
     this.left = new Node(null, value, null)
   }
   find(parent, value) {
-    if (this.value === value) return { parent, node: this }
-    const node = value > this.value ? this.right : this.left
-    if (!node) return { parent, node }
-    return node.find(this, value)
+    let node = this
+    while (node) {
+      if (node.value === value) break
+      parent = node
+      node = value < node.value ? node.left : node.right
+    }
+    return { parent, node }
   }
   remove(node) {
     this.left === node
