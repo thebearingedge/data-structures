@@ -54,6 +54,7 @@ describe('Queue', () => {
       expect(queue.size).to.equal(1)
       expect(queue.peek()).to.equal(7)
     })
+
   })
 
   describe('dequeue()', () => {
@@ -64,6 +65,7 @@ describe('Queue', () => {
         const queue = new Queue()
         expect(() => queue.dequeue()).to.throw(RangeError)
       })
+
     })
 
     context('when the queue is not empty', () => {
