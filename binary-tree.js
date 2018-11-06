@@ -26,11 +26,6 @@ class Node {
       ? this.left = node
       : this.right = node
   }
-  postOrderArray() {
-    const left = this.left ? this.left.postOrderArray() : []
-    const right = this.right ? this.right.postOrderArray() : []
-    return [...left, ...right, this.value]
-  }
 }
 
 export default class BinaryTree {
@@ -84,9 +79,26 @@ export default class BinaryTree {
       node = right
     }
   }
-  postOrderArray() {
-    if (!this._root) return []
-    return this._root.postOrderArray()
+  * postOrder() {
+    const nodes = new Stack()
+    let { _root: node } = this
+    while (node || nodes.size) {
+      if (node) {
+        node.right && nodes.push(node.right)
+        nodes.push(node)
+        node = node.left
+        continue
+      }
+      node = nodes.pop()
+      if (node.right === nodes.peek()) {
+        nodes.pop()
+        nodes.push(node)
+        node = node.right
+        continue
+      }
+      yield node.value
+      node = null
+    }
   }
   * levelOrder() {
     const nodes = new Queue()

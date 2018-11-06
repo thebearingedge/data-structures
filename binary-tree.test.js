@@ -15,19 +15,20 @@ describe('BinaryTree', () => {
 
   describe('preOrder()', () => {
 
-    it('returns an array in pre-order', () => {
+    it('generates values in pre-order', () => {
       const tree = new BinaryTree(6, 4, 9, 2, 5, 8, 10, 1, 3, 7)
-      expect([...tree.preOrder()]).to.deep.equal([6, 4, 2, 1, 3, 5, 9, 8, 7, 10])
+      expect([...tree.preOrder()])
+        .to.deep.equal([6, 4, 2, 1, 3, 5, 9, 8, 7, 10])
     })
 
   })
 
-  describe('postOrderArray()', () => {
+  describe('postOrder()', () => {
 
-    it('returns an array in pre-order', () => {
+    it('generates values in post-order', () => {
       const tree = new BinaryTree(6, 4, 9, 2, 5, 8, 10, 1, 3, 7)
-      const array = tree.postOrderArray()
-      expect(array).to.deep.equal([1, 3, 2, 5, 4, 7, 8, 10, 9, 6])
+      expect([...tree.postOrder()])
+        .to.deep.equal([1, 3, 2, 5, 4, 7, 8, 10, 9, 6])
     })
 
   })
