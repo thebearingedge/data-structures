@@ -16,12 +16,7 @@ class Node {
     }
     return { parent, node }
   }
-  remove(node) {
-    this.left === node
-      ? this.left = null
-      : this.right = null
-  }
-  replace(node, child) {
+  replace(child, node) {
     this.left === child
       ? this.left = node
       : this.right = node
@@ -48,6 +43,44 @@ export default class BinaryTree {
   contains(value) {
     return !!this._root &&
            !!this._root.find(this, value).node
+  }
+  delete(value) {
+    if (!this._root) return this
+    const { parent, node } = this._root.find(this, value)
+    if (!node) return this
+    const isRoot = parent === this
+    if (!node.left && !node.right) {
+      isRoot
+        ? this._root = null
+        : parent.replace(node, null)
+      return this
+    }
+    if (!node.right) {
+      isRoot
+        ? this._root = node.left
+        : parent.replace(node, node.left)
+      return this
+    }
+    if (!node.right.left) {
+      node.right.left = node.left
+      isRoot
+        ? this._root = node.right
+        : parent.replace(node, node.right)
+      return this
+    }
+    let { right: prev } = node
+    let { left: promoted } = node.right
+    while (promoted.left) {
+      prev = promoted
+      promoted = promoted.left
+    }
+    prev.left = null
+    promoted.left = node.left
+    promoted.right = node.right
+    isRoot
+      ? this._root = promoted
+      : parent.replace(node, promoted)
+    return this
   }
   * preOrder() {
     const nodes = new Stack()
@@ -109,43 +142,5 @@ export default class BinaryTree {
       left && nodes.enqueue(left)
       right && nodes.enqueue(right)
     }
-  }
-  delete(value) {
-    if (!this._root) return this
-    const { parent, node } = this._root.find(this, value)
-    if (!node) return this
-    const isRoot = parent === this
-    if (!node.left && !node.right) {
-      isRoot
-        ? this._root = null
-        : parent.remove(node)
-      return this
-    }
-    if (!node.right) {
-      isRoot
-        ? this._root = node.left
-        : parent.replace(node.left, node)
-      return this
-    }
-    if (!node.right.left) {
-      node.right.left = node.left
-      isRoot
-        ? this._root = node.right
-        : parent.replace(node.right, node)
-      return this
-    }
-    let { right: prev } = node
-    let { left: promoted } = node.right
-    while (promoted.left) {
-      prev = promoted
-      promoted = promoted.left
-    }
-    prev.left = null
-    promoted.left = node.left
-    promoted.right = node.right
-    isRoot
-      ? this._root = promoted
-      : parent.replace(promoted, node)
-    return this
   }
 }

@@ -137,6 +137,14 @@ describe('BinaryTree', () => {
 
       context('and the value has no right child', () => {
 
+        it('removes the root and returns the tree', () => {
+          const tree = new BinaryTree(2, 1)
+          const result = tree.delete(2)
+          expect(result).to.equal(tree)
+          expect(tree.contains(2)).to.equal(false)
+          expect(tree.contains(1)).to.equal(true)
+        })
+
         it('removes the value and returns the tree', () => {
           const tree = new BinaryTree(4, 2, 1, 6, 7, 5)
           const result = tree.delete(2)
@@ -154,11 +162,12 @@ describe('BinaryTree', () => {
       context('and the value has a right child with no left child', () => {
 
         it('removes the root and returns the tree', () => {
-          const tree = new BinaryTree(2, 1)
-          const result = tree.delete(2)
+          const tree = new BinaryTree(3, 5, 2)
+          const result = tree.delete(3)
           expect(result).to.equal(tree)
-          expect(tree.contains(2)).to.equal(false)
-          expect(tree.contains(1)).to.equal(true)
+          expect(tree.contains(3)).to.equal(false)
+          expect(tree.contains(5)).to.equal(true)
+          expect(tree.contains(2)).to.equal(true)
         })
 
         it('removes child and returns the tree', () => {
@@ -167,6 +176,7 @@ describe('BinaryTree', () => {
           expect(result).to.equal(tree)
           expect(tree.contains(1)).to.equal(true)
           expect(tree.contains(2)).to.equal(true)
+          expect(tree.contains(3)).to.equal(true)
           expect(tree.contains(4)).to.equal(true)
           expect(tree.contains(5)).to.equal(true)
           expect(tree.contains(6)).to.equal(true)
@@ -181,20 +191,12 @@ describe('BinaryTree', () => {
       context('and the value has a right child with a left child', () => {
 
         it('removes the root and returns the tree', () => {
-          const tree = new BinaryTree(3, 5, 2)
-          const result = tree.delete(3)
-          expect(result).to.equal(tree)
-          expect(tree.contains(3)).to.equal(false)
-          expect(tree.contains(5)).to.equal(true)
-          expect(tree.contains(2)).to.equal(true)
-        })
-
-        it('removes the child and returns the tree', () => {
           const tree = new BinaryTree(6, 4, 9, 2, 5, 8, 10, 1, 3, 7)
           const result = tree.delete(6)
           expect(result).to.equal(tree)
           expect(tree.contains(1)).to.equal(true)
           expect(tree.contains(2)).to.equal(true)
+          expect(tree.contains(3)).to.equal(true)
           expect(tree.contains(4)).to.equal(true)
           expect(tree.contains(5)).to.equal(true)
           expect(tree.contains(6)).to.equal(false)
@@ -202,6 +204,18 @@ describe('BinaryTree', () => {
           expect(tree.contains(8)).to.equal(true)
           expect(tree.contains(9)).to.equal(true)
           expect(tree.contains(10)).to.equal(true)
+        })
+
+        it('removes the child and returns the tree', () => {
+          const tree = new BinaryTree(1, 4, 3, 6, 5, 2)
+          const result = tree.delete(4)
+          expect(result).to.equal(tree)
+          expect(tree.contains(1)).to.equal(true)
+          expect(tree.contains(2)).to.equal(true)
+          expect(tree.contains(3)).to.equal(true)
+          expect(tree.contains(4)).to.equal(false)
+          expect(tree.contains(5)).to.equal(true)
+          expect(tree.contains(6)).to.equal(true)
         })
 
       })
