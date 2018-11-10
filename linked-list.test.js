@@ -278,4 +278,13 @@ describe('LinkedList', () => {
 
   })
 
+  describe('reverse()', () => {
+
+    it('reverses and returns the list', () => {
+      const list = new LinkedList(1, 2, 3, 4)
+      expect([...list.reverse()]).to.deep.equal([4, 3, 2, 1])
+    })
+
+  })
+
 })

@@ -78,6 +78,19 @@ export default class LinkedList {
     this._tail = prev.next ? this._tail : prev
     return this
   }
+  reverse() {
+    let head, tail, curr, next
+    head = tail = curr = this._head
+    while (curr) {
+      next = curr.next
+      curr.next = head
+      head = curr
+      curr = next
+    }
+    tail.next = null
+    this._head = head
+    return this
+  }
   * [Symbol.iterator]() {
     let { _head: node } = this
     while (node) {
