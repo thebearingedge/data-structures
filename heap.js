@@ -54,6 +54,9 @@ export default class Heap {
       index = smallerChildIndex
     }
   }
+  get size() {
+    return this._items.length
+  }
   peek() {
     return this._items[0]
   }
@@ -66,5 +69,12 @@ export default class Heap {
     const item = this._items.pop()
     this._normalizeDown()
     return item
+  }
+  * [Symbol.iterator]() {
+    const Construct = this.constructor
+    const heap = new Construct(...this._items)
+    while (heap.size) {
+      yield heap.pop()
+    }
   }
 }

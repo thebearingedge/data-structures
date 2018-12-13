@@ -20,7 +20,7 @@ describe('Heap', () => {
       it('adds the value to the top of the heap', () => {
         const heap = new Heap(6)
         heap.push(5)
-        expect(heap.peek()).to.equal(5)
+        expect([...heap]).to.deep.equal([5, 6])
       })
 
     })
@@ -28,9 +28,9 @@ describe('Heap', () => {
     context('when the heap contains an item less than value', () => {
 
       it('add the value to the bottom of the heap', () => {
-        const heap = new Heap(6)
-        heap.push(7)
-        expect(heap.peek()).to.equal(6)
+        const heap = new Heap(6, 2, 9, 18, 6)
+        heap.push(20)
+        expect([...heap]).to.deep.equal([2, 6, 6, 9, 18, 20])
       })
 
     })
