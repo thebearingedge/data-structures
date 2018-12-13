@@ -37,4 +37,41 @@ describe('Heap', () => {
 
   })
 
+  describe('pop()', () => {
+
+    context('when the heap is empty', () => {
+
+      it('returns undefined', () => {
+        const heap = new Heap()
+        const item = heap.pop()
+        expect(item).to.equal(void 0)
+      })
+
+    })
+
+    context('when the heap contains one item', () => {
+
+      it('returns and removes the item', () => {
+        const heap = new Heap(3)
+        expect(heap.pop()).to.equal(3)
+        expect(heap.pop()).to.equal(void 0)
+      })
+
+    })
+
+    context('when the heap contains many items', () => {
+
+      it('returns and removes the minimum item', () => {
+        const heap = new Heap(5, 8, 3, 20, 15)
+        expect(heap.pop()).to.equal(3)
+        expect(heap.pop()).to.equal(5)
+        expect(heap.pop()).to.equal(8)
+        expect(heap.pop()).to.equal(15)
+        expect(heap.pop()).to.equal(20)
+      })
+
+    })
+
+  })
+
 })
