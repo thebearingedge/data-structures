@@ -71,8 +71,8 @@ export default class Heap {
     return item
   }
   * [Symbol.iterator]() {
-    const Construct = this.constructor
-    const heap = new Construct(...this._items)
+    const Heap = this.constructor
+    const heap = new Heap(...this._items)
     while (heap.size) {
       yield heap.pop()
     }
