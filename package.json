@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "test": "mocha --opts mocha.opts",
     "tdd": "mocha -w -R min --opts mocha.opts",
     "cover": "nyc npm test"
