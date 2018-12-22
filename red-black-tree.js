@@ -78,6 +78,7 @@ export default class RedBlackTree {
     let { grandparent, uncle } = node
     if (!grandparent) return this
     if (!uncle || uncle.isBlack) {
+      // Left Right
       if (parent.right === node && grandparent.left === parent) {
         const { left: nLeft } = node
         grandparent.left = node
@@ -86,6 +87,16 @@ export default class RedBlackTree {
         node = parent
         parent = node.parent
       }
+      // Right Left
+      if (parent.left === node && grandparent.right === parent) {
+        const { right: nRight } = node
+        grandparent.right = node
+        node.right = parent
+        parent.left = nRight
+        node = parent
+        parent = node.parent
+      }
+      // Right Right
       if (parent.right === node && grandparent.right === parent) {
         parent.isBlack = grandparent.isBlack
         grandparent.isBlack = !parent.isBlack
@@ -96,6 +107,7 @@ export default class RedBlackTree {
         parent.parent = gParent
         if (!parent.parent) this._root = parent
       }
+      // Left Left
       if (parent.left === node && grandparent.left === parent) {
         parent.isBlack = grandparent.isBlack
         grandparent.isBlack = !parent.isBlack

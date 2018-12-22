@@ -94,6 +94,26 @@ describe.only('Red Black Tree', () => {
       })
     })
 
+    it('should rebalance right-left insertions', () => {
+      const tree = new RedBlackTree(1, 3, 2)
+      expect(tree.toJSON()).to.deep.equal({
+        value: 2,
+        isBlack: true,
+        left: {
+          value: 1,
+          isBlack: false,
+          left: null,
+          right: null
+        },
+        right: {
+          value: 3,
+          isBlack: false,
+          left: null,
+          right: null
+        }
+      })
+    })
+
   })
 
   describe('contains(value)', () => {
