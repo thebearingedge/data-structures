@@ -34,8 +34,48 @@ describe.only('Red Black Tree', () => {
       })
     })
 
-    it('should rebalance in-order insertions', () => {
+    it('should rebalance ascending insertions', () => {
       const tree = new RedBlackTree(1, 2, 3)
+      expect(tree.toJSON()).to.deep.equal({
+        value: 2,
+        isBlack: true,
+        left: {
+          value: 1,
+          isBlack: false,
+          left: null,
+          right: null
+        },
+        right: {
+          value: 3,
+          isBlack: false,
+          left: null,
+          right: null
+        }
+      })
+    })
+
+    it('should rebalance descending insertions', () => {
+      const tree = new RedBlackTree(3, 2, 1)
+      expect(tree.toJSON()).to.deep.equal({
+        value: 2,
+        isBlack: true,
+        left: {
+          value: 1,
+          isBlack: false,
+          left: null,
+          right: null
+        },
+        right: {
+          value: 3,
+          isBlack: false,
+          left: null,
+          right: null
+        }
+      })
+    })
+
+    it('should rebalance left-right insertions', () => {
+      const tree = new RedBlackTree(3, 1, 2)
       expect(tree.toJSON()).to.deep.equal({
         value: 2,
         isBlack: true,
